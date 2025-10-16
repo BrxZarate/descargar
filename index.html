@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Descargas de Imágenes — Minimal</title>
+  <style>
+    :root{
+      --bg: #fff9f6;
+      --warm-brown: #8B5E3C;
+      --accent: #70492e;
+      --muted: rgba(0,0,0,0.06);
+      --radius: 999px;
+      --gap: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #fff7f2);
+      color:#2b2b2b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .card{
+      width:min(720px, 92vw);
+      background:linear-gradient(180deg, rgba(139,94,60,0.06), rgba(139,94,60,0.02));
+      border-radius:16px;
+      padding:32px;
+      box-shadow: 0 8px 30px rgba(107,66,47,0.08);
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+      align-items:center;
+    }
+
+    h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+      color:var(--accent);
+      font-weight:600;
+    }
+    p.lead{
+      margin:0;
+      font-size:13px;
+      color:rgba(0,0,0,0.55);
+    }
+
+    .grid{
+      display:flex;
+      gap:var(--gap);
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:6px;
+    }
+
+    .btn{
+      --padX:22px;
+      --padY:12px;
+
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:var(--padY) var(--padX);
+      border-radius:var(--radius);
+      background:transparent;
+      border:1px solid rgba(112,73,46,0.12);
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      backdrop-filter: blur(6px);
+      transition:transform 240ms cubic-bezier(.2,.9,.34,1), box-shadow 240ms, border-color 240ms;
+      position:relative;
+      min-width:160px;
+      justify-content:center;
+    }
+
+    .btn::after{
+      content:"";
+      position:absolute;
+      left:10px; right:10px; bottom:6px;
+      height:6px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(139,94,60,0.08), rgba(112,73,46,0.06));
+      z-index:-1;
+      transition:opacity 240ms, transform 240ms;
+      opacity:0;
+      transform:translateY(6px) scaleX(0.96);
+    }
+
+    .btn:hover,
+    .btn:focus{
+      transform:translateY(-6px) scale(1.02);
+      border-color: rgba(112,73,46,0.22);
+      box-shadow: 0 10px 30px rgba(112,73,46,0.10);
+      outline: none;
+    }
+    .btn:hover::after,
+    .btn:focus::after{
+      opacity:1;
+      transform:translateY(0) scaleX(1);
+    }
+
+    .btn .dot{
+      width:10px; height:10px; border-radius:50%; background:var(--warm-brown);
+      box-shadow:0 2px 6px rgba(139,94,60,0.28);
+      flex:0 0 10px;
+    }
+
+    .btn.secondary{
+      border-style:dashed;
+      color:var(--accent);
+      font-weight:600;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .btn .dot{
+        animation: pulse 2200ms infinite ease-in-out;
+      }
+      @keyframes pulse{
+        0%{transform:scale(1); opacity:1}
+        50%{transform:scale(1.25); opacity:0.9}
+        100%{transform:scale(1); opacity:1}
+      }
+    }
+
+    .btn:focus{
+      box-shadow: 0 0 0 6px rgba(139,94,60,0.08), 0 8px 24px rgba(112,73,46,0.08);
+    }
+
+    footer{
+      margin-top:6px;
+      font-size:12px;
+      color:rgba(0,0,0,0.45);
+    }
+
+    @media (max-width:420px){
+      .grid{gap:12px}
+      .btn{min-width:140px; padding:10px 16px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div style="text-align:center;">
+      <h1>Imágenes para descargar</h1>
+      <p class="lead">Recetas en diagrama de flujo.</p>
+    </div>
+
+    <div class="grid" role="list">
+      <!-- Reemplaza los href por las rutas reales a tus imágenes -->
+      <a class="btn" role="listitem" href="C:\Users\lexza\OneDrive\Imágenes\espagueti.png" download="espagueti.png" aria-label="Espagueti Verde">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Espagueti Verde</span>
+      </a>
+
+      <a class="btn" role="listitem" href="C:\Users\lexza\OneDrive\Imágenes\pavo.png" download="pavo.png" aria-label="Pavo rostizado">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Pavo rostizado</span>
+      </a>
+
+      <a class="btn secondary" role="listitem" href="C:\Users\lexza\OneDrive\Imágenes\papotas.png" download="papotas.png" aria-label="Papotas con paprika">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Papotas con papikra</span>
+      </a>
+
+      <a class="btn" role="listitem" href="C:\Users\lexza\OneDrive\Imágenes\macaron.png" download=macaron.png" aria-label="Macarons de Vainilla">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Macarons de Vainilla</span>
+      </a>
+    </div>
+
+    <footer aria-hidden="true">Brilix inc.</footer>
+  </main>
+</body>
+</html>
